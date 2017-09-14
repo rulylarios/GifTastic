@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>GifTastic</title>
+
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>Raul's Giphy Search </h1>
+
+ <div id="buttons-view"></div>
+
+ <div id="giphy-view"></div>
+
+<div class="container">
+	<div class="row">
+  		<div class="col-md-12 col-md-offset-8"> 
+  			<form id="giphy-form">
+      			<label for="giphy-input">Add Your Own Button</label>
+      			<input type="text" id="giphy-input"><br>
+     		 	<input id="add-giphy" type="submit" value="Add a Button">
+ 			</form>
+ 		</div>
+	</div>
+</div>
+ 
+
+<script>
+
+//function loadGiphy(){
+
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=88d9c5c58a554fbea1ebb10e2506ba90&limit=10"
+
+console.log(queryURL);
+//queryURL.done(function(data) { 
+	//var ryan = data.data[0].images.original
+	//console.log(ryan);});
+
+$.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+
+        	var url = response.data[2].images.original.url;
+        	console.log(url);
+        	$("#giphy-view").html();
+        	//$("#test").attr("src", url);
+
+        })
+
+
+
+//}
+	
+
+</script>
+
+
+</body>
+
+</html>
